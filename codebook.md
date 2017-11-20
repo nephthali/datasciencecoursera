@@ -3,7 +3,7 @@
 
 #### Check the required packages
 ```
-packages <- c("data.table", "reshape2", "knitr")
+packages <- c("data.table", "reshape2", "knitr", "markdown")
 checkPackages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(packages) != length(checkPackages)){
   message("Installed required packages")
@@ -111,12 +111,12 @@ dt$featDomain <- factor(x %*% y, labels=c("Time", "Freq"))
 ```
 -- Extract Acceleration, gyroscope features
 ```
-x <- matrix(c(grepl("^Acc", dt$feature),  grepl("^Gyro", dt$feature)), ncol=nrow(y))
+x <- matrix(c(grepl("Acc", dt$feature),  grepl("Gyro", dt$feature)), ncol=nrow(y))
 dt$featInstrument <- factor(x %*% y, labels=c("Accelerometer", "Gyroscope"))
 ```
 -- Extract Body and Gravity accceleration features
 ```
-x <- matrix(c(grepl("^BodyAcc", dt$feature), grepl("^GravityAcc", dt$feature)), ncol=nrow(y))
+x <- matrix(c(grepl("BodyAcc", dt$feature), grepl("GravityAcc", dt$feature)), ncol=nrow(y))
 dt$featAcceleration <- factor(x %*% y, labels=c(NA, "Body", "Gravity"))
 ```
 -- Extract mean and standard deviation features

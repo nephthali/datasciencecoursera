@@ -172,7 +172,7 @@ hr {
 
 <h4>Check the required packages</h4>
 
-<pre><code>packages &lt;- c(&quot;data.table&quot;, &quot;reshape2&quot;, &quot;knitr&quot;)
+<pre><code>packages &lt;- c(&quot;data.table&quot;, &quot;reshape2&quot;, &quot;knitr&quot;, &quot;markdown&quot;)
 checkPackages &lt;- packages[!(packages %in% installed.packages()[,&quot;Package&quot;])]
 if(length(packages) != length(checkPackages)){
   message(&quot;Installed required packages&quot;)
@@ -283,12 +283,12 @@ dt$featDomain &lt;- factor(x %*% y, labels=c(&quot;Time&quot;, &quot;Freq&quot;)
 </code>
 &ndash; Extract Acceleration, gyroscope features
 <code>
-x &lt;- matrix(c(grepl(&quot;^Acc&quot;, dt$feature),  grepl(&quot;^Gyro&quot;, dt$feature)), ncol=nrow(y))
+x &lt;- matrix(c(grepl(&quot;Acc&quot;, dt$feature),  grepl(&quot;Gyro&quot;, dt$feature)), ncol=nrow(y))
 dt$featInstrument &lt;- factor(x %*% y, labels=c(&quot;Accelerometer&quot;, &quot;Gyroscope&quot;))
 </code>
 &ndash; Extract Body and Gravity accceleration features
 <code>
-x &lt;- matrix(c(grepl(&quot;^BodyAcc&quot;, dt$feature), grepl(&quot;^GravityAcc&quot;, dt$feature)), ncol=nrow(y))
+x &lt;- matrix(c(grepl(&quot;BodyAcc&quot;, dt$feature), grepl(&quot;GravityAcc&quot;, dt$feature)), ncol=nrow(y))
 dt$featAcceleration &lt;- factor(x %*% y, labels=c(NA, &quot;Body&quot;, &quot;Gravity&quot;))
 </code>
 &ndash; Extract mean and standard deviation features
